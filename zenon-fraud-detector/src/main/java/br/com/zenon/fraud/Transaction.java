@@ -15,18 +15,18 @@ public record Transaction(
     }
 
 
-    @Override
-    public String toString() {
-        return "step : " + step +
-                "\ntype : " + type +
-                "\namount : " + amount +
-                "\nnameOrig : " + origin.name() +
-                "\noldbalanceOrg : " + origin.oldBalance() +
-                "\nnewbalanceOrig : " + origin.newBalance() +
-                "\nnameDest : " + destination.name() +
-                "\noldbalanceDest : " + destination.oldBalance() +
-                "\nnewbalanceDest : " + destination.newBalance() +
-                "\nisFraud : " + isFraud +
-                "\nisFlaggedFraud : " + isFlaggedFraud;
-    }
+//    @Override
+//    public String toString() {
+//        return "step : " + step +
+//                "\ntype : " + type +
+//                "\namount : " + amount +
+//                "\nnameOrig : " + origin.name() +
+//                "\noldbalanceOrg : " + origin.oldBalance() +
+//                "\nnewbalanceOrig : " + origin.newBalance() +
+//                "\nnameDest : " + destination.name() +
+//                "\noldbalanceDest : " + destination.oldBalance() +
+//                "\nnewbalanceDest : " + destination.newBalance() +
+//                "\nisFraud : " + isFraud +
+//                "\nisFlaggedFraud : " + isFlaggedFraud;
+//    }
 }
