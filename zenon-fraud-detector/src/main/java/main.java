@@ -12,9 +12,8 @@ public class main {
     static void main(String[] args) throws IOException {
 
             TransactionIngestor transactionIngestor = new TransactionIngestor();
-            List<Transaction> transactionList = transactionIngestor.ingest("data/PS_20174392719_1491204439457_log.csv");
+            List<Transaction> transactionList = transactionIngestor.ingest("data/paysim_with_bad_data.csv");
             transactionList.stream()
-                    .limit(10)
                     .forEach(System.out::println);
     }
 }

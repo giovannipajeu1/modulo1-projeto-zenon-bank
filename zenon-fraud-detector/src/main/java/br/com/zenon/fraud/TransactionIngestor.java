@@ -12,36 +12,46 @@ public class TransactionIngestor {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         String linha;
         br.readLine();
-        while ((linha = br.readLine()) != null){
-        String[] campos = linha.split(",");
-        int step = Integer.parseInt(campos[0]);
-            Transaction.Type type = Transaction.Type.valueOf(campos[1]);
-            double amount = Double.parseDouble(campos[2]);
-        Account account = new Account(
-                campos[3],
-                Double.parseDouble(campos[4]),
-                Double.parseDouble(campos[5])
-        );
-        Account accountDest = new Account(
-                campos[6],
-                Double.parseDouble(campos[7]),
-                Double.parseDouble(campos[8])
-        );
-        int isFraud = Integer.parseInt(campos[9]);
-        int isFlaggedFraud = Integer.parseInt(campos[10]);
+        int erros = 0;
+        while ((linha = br.readLine()) != null) {
+            try {
+                String[] campos = linha.split(",");
+                int step = Integer.parseInt(campos[0]);
+                Transaction.Type type = Transaction.Type.valueOf(campos[1]);
+                double amount = Double.parseDouble(campos[2]);
+                Account account = new Account(
+                        campos[3],
+                        Double.parseDouble(campos[4]),
+                        Double.parseDouble(campos[5])
+                );
+                Account accountDest = new Account(
+                        campos[6],
+                        Double.parseDouble(campos[7]),
+                        Double.parseDouble(campos[8])
+                );
+                int isFraud = Integer.parseInt(campos[9]);
+                int isFlaggedFraud = Integer.parseInt(campos[10]);
+                transactionList.add(new Transaction(step,
+                        type,
+                        amount,
+                        account,
+                        accountDest,
+                        isFraud,
+                        isFlaggedFraud
+                ));
 
-         transactionList.add(new Transaction(step,
-                 type,
-                 amount,
-                 account,
-                 accountDest,
-                 isFraud,
-                 isFlaggedFraud
-         ));
+            } catch (Exception e) {
+                System.err.println("Erro:" + linha + " | " + e);
+                erros++;
+
+
+            }
+
+
+
         }
         br.close();
-        return  transactionList;
+        System.out.println(erros);
+        return transactionList;
     }
-
-
 }
