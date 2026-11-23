@@ -51,7 +51,8 @@ public class TransactionIngestor {
 
         }
         br.close();
-        System.out.println(erros);
         return transactionList;
+
+
     }
 }
